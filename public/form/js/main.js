@@ -210,3 +210,27 @@
     
 })(jQuery);
 
+
+function sendwhatsapp() {
+    var phonenumber = "+6285374338260";
+
+    // Menggunakan getElementById untuk mengambil nilai
+    var nama = document.getElementById("nama").value;
+    var nohp = document.getElementById("nohp").value;
+    var tanggal = document.getElementById("tanggal").value;
+    var waktu = document.getElementById("waktu").value;
+    var deskripsi = document.getElementById("deskripsi").value;
+
+    var url = "https://wa.me/" + phonenumber + "?text=" +
+        "*nama :* " + nama + "%0a" +
+        "*nohp :* " + nohp + "%0a" +
+        "*tanggal:* " + tanggal + "%0a" +
+        "*waktu:* " + waktu + "%0a" +
+        "*deskripsi :* " + deskripsi;
+
+    // Membuka WhatsApp di tab baru
+    window.open(url, '_blank');
+
+    // Mengarahkan tab utama ke halaman beranda
+    window.location.href = "/beranda"; // Ganti dengan URL halaman beranda Anda
+}
