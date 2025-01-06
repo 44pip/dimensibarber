@@ -54,7 +54,9 @@
                                 <a href="index.html" class="">
                                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
                                 </a>
-                                <h3>Masuk</h3>
+                                <a href="/beranda">
+                                    <h3>Back</h3>
+                                </a>
                             </div>
                             <form action="{{ route('login') }}" method="post">
                                 @csrf

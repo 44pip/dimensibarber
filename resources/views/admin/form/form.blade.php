@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
         rel="stylesheet">
 
-
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -45,9 +44,8 @@
 
         <!-- Form Start -->
         <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh;">
-
             <div class="row g-4">
-                <div class="col-sm-12 col-xl-10"> <!-- Ubah di sini -->
+                <div class="col-sm-12 col-xl-10">
                     <div class="bg-secondary rounded h-100 p-4" style="padding: 2rem;">
                         <h6 class="mb-4">Formulir Pemesanan</h6>
                         <form action="post">
@@ -65,14 +63,35 @@
                             </div>
                             <div class="mb-3">
                                 <label for="waktu" class="form-label">Waktu</label>
-                                <input type="time" class="form-control" id="waktu" required>
+                                <div class="time-options" id="time-options">
+                                    <button type="button" class="time-button" onclick="selectTime(this)">09:00</button>
+                                    <button type="button" class="time-button" onclick="selectTime(this)">10:00</button>
+                                    <button type="button" class="time-button" onclick="selectTime(this)">11:00</button>
+                                    <button type="button" class="time-button" onclick="selectTime(this)">12:00</button>
+                                    <button type="button" class="time-button" onclick="selectTime(this)">13:00</button>
+                                    <button type="button" class="time-button" onclick="selectTime(this)">14:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">15:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">16:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">17:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">18:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">19:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">20:00</button>
+                                    <button type="button" class="time-button"
+                                        onclick="selectTime(this)">21:00</button>
+                                </div>
+                                <input type="hidden" id="selected-time" name="selected-time" required>
                             </div>
                             <div class="mb-3">
                                 <label for="deskripsi" class="form-label">Deskripsi</label>
                                 <textarea class="form-control" id="deskripsi" rows="3" required></textarea>
                             </div>
-                            <button type="button" class="btn btn-primary"
-                                onclick="sendwhatsapp();">Kirim</button>
+                            <button type="button" class="btn btn-primary" onclick="sendwhatsapp();">Kirim</button>
                         </form>
                     </div>
                 </div>
@@ -86,10 +105,8 @@
     </div>
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js">
-        < /> <
-        script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" >
-    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/form/lib/chart/chart.min.js"></script>
     <script src="/form/lib/easing/easing.min.js"></script>
     <script src="/form/lib/waypoints/waypoints.min.js"></script>
@@ -101,4 +118,7 @@
     <!-- Template Javascript -->
     <script src="/form/js/main.js"></script>
     <script src="/form/js/wa.js"></script>
+
 </body>
+
+</html>

@@ -4,20 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class SessionController extends Controller
+class DashboardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('sesi.login');
+        return view('admin.dashboard');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function login()
+    public function create()
     {
         //
     }

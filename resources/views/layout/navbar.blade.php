@@ -66,9 +66,8 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('pemesanan.create') }}"
-                class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Pesan Sekarang<i
-                    class="fa fa-arrow-right ms-3"></i></a>
+            <a href="{{ route('login') }}"
+                class="btn btn-primary rounded-0 py-2 px-lg-4 d-none d-lg-block">Login Admin</a>
         </div>
     </nav>
     <!-- Navbar End -->

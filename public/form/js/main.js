@@ -211,6 +211,33 @@
 })(jQuery);
 
 
+// Fungsi untuk menyimpan waktu yang sudah dipesan
+function saveBookedTime(waktu) {
+    let bookedTimes = JSON.parse(localStorage.getItem('bookedTimes')) || {};
+    const today = new Date().toISOString().split('T')[0]; // Mendapatkan tanggal hari ini
+    bookedTimes[today] = bookedTimes[today] || [];
+    bookedTimes[today].push(waktu);
+    localStorage.setItem('bookedTimes', JSON.stringify(bookedTimes));
+}
+
+// Fungsi untuk memeriksa dan menghapus waktu yang sudah dipesan
+function checkAndResetBookedTimes() {
+    const today = new Date().toISOString().split('T')[0];
+    let bookedTimes = JSON.parse(localStorage.getItem('bookedTimes')) || {};
+    
+    // Hapus waktu yang sudah dipesan jika sudah berganti hari
+    Object.keys(bookedTimes).forEach(date => {
+        if (date !== today) {
+            delete bookedTimes[date];
+        }
+    });
+    
+    localStorage.setItem('bookedTimes', JSON.stringify(bookedTimes));
+}
+
+// Panggil fungsi untuk memeriksa dan mereset waktu yang sudah dipesan
+checkAndResetBookedTimes();
+
 function sendwhatsapp() {
     var phonenumber = "+6285374338260";
 
@@ -218,19 +245,58 @@ function sendwhatsapp() {
     var nama = document.getElementById("nama").value;
     var nohp = document.getElementById("nohp").value;
     var tanggal = document.getElementById("tanggal").value;
-    var waktu = document.getElementById("waktu").value;
+    var waktu = document.getElementById("selected-time").value; // Mengambil waktu dari input tersembunyi
     var deskripsi = document.getElementById("deskripsi").value;
 
     var url = "https://wa.me/" + phonenumber + "?text=" +
-        "*nama :* " + nama + "%0a" +
-        "*nohp :* " + nohp + "%0a" +
-        "*tanggal:* " + tanggal + "%0a" +
-        "*waktu:* " + waktu + "%0a" +
-        "*deskripsi :* " + deskripsi;
+        "*Nama:* " + nama + "%0a" +
+        "*No HP:* " + nohp + "%0a" +
+        "*Tanggal:* " + tanggal + "%0a" +
+        "*Waktu:* " + waktu + "%0a" + // Menambahkan waktu yang dipilih
+        "*Deskripsi:* " + deskripsi;
 
     // Membuka WhatsApp di tab baru
     window.open(url, '_blank');
 
+    // Mengganti teks tombol yang dipilih dengan "BOOKED"
+    var selectedButton = document.querySelector('.time-button.selected');
+    if (selectedButton) {
+        selectedButton.innerText = "BOOKED";
+        selectedButton.disabled = true; // Menonaktifkan tombol agar tidak bisa diklik lagi
+        saveBookedTime(waktu); // Simpan waktu yang sudah dipesan
+    }
+
     // Mengarahkan tab utama ke halaman beranda
     window.location.href = "/beranda"; // Ganti dengan URL halaman beranda Anda
 }
+
+function selectTime(button) {
+    // Hapus kelas 'selected' dari semua tombol
+    document.querySelectorAll('.time-button').forEach(btn => {
+        btn.classList.remove('selected');
+    });
+    // Tambahkan kelas 'selected' ke tombol yang dipilih
+    button.classList.add('selected');
+    // Set waktu yang dipilih ke input tersembunyi
+    document.getElementById('selected-time').value = button.innerText;
+}
+
+// Fungsi untuk memulihkan status pemesanan saat halaman dimuat
+function restoreBookedTimes() {
+    const today = new Date().toISOString().split('T')[0];
+    let bookedTimes = JSON.parse(localStorage.getItem('bookedTimes')) || {};
+    
+    if (bookedTimes[today]) {
+        bookedTimes[today].forEach(waktu => {
+            document.querySelectorAll('.time-button').forEach(btn => {
+                if (btn.innerText === waktu) {
+                    btn.innerText = "BOOKED";
+                    btn.disabled = true; // Menonaktifkan tombol yang sudah dipesan
+                }
+            });
+        });
+    }
+}
+
+// Panggil fungsi untuk memulihkan status pemesanan saat halaman dimuat
+document.addEventListener('DOMContentLoaded', restoreBookedTimes);

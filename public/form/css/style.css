@@ -288,3 +288,23 @@
     border-color: var(--primary);
 }
 
+.time-button {
+    background-color: #000; /* Warna latar belakang hitam */
+    color: white; /* Warna teks */
+    border: none; /* Menghilangkan border */
+    border-radius: 5px; /* Sudut membulat */
+    padding: 10px 15px; /* Padding */
+    margin: 5px; /* Margin antar tombol */
+    cursor: pointer; /* Pointer saat hover */
+    transition: background-color 0.3s, transform 0.2s; /* Transisi untuk efek hover */
+    font-size: 16px; /* Ukuran font */
+}
+
+.time-button:hover {
+    background-color: #333; /* Warna latar belakang saat hover */
+    transform: scale(1.05); /* Efek zoom saat hover */
+}
+
+.time-button.selected {
+    background-color: #ff0000; /* Warna latar belakang merah untuk tombol yang dipilih */
+}

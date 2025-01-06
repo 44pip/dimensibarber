@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SessionController;
+use Illuminate\Auth\Middleware\Authenticate;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PemesananController;
 
+// Landing Page
 Route::get('/beranda', function () {
     return view('landingpage.beranda');
 });
@@ -23,13 +25,18 @@ Route::get('/jamkerja', function () {
 Route::get('/testimoni', function () {
     return view('landingpage.testimoni');
 });
-route::resource('/pemesanan', PemesananController::class);
-route::get('/sesi', [SessionController::class, 'index']);
-route::get('/sesi/login', [SessionController::class, 'login']);
 
-// Route::resource('')
-
-
+// Route auth
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route Admin
+Route::middleware([Authenticate::class])->group(function () {
+    route::resource('dashboard', DashboardController::class);
+    route::resource('pemesanan', PemesananController::class);
+});
+
+// Logout
+Route::get('logout', function () {
+    Auth::logout();
+    return redirect('login');
+});
