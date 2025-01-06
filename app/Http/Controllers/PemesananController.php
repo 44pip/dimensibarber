@@ -20,7 +20,7 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        return view('formPemesanan.form');
+        return view('admin.form.form');
     }
 
     /**
