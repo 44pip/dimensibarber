@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id(); // Primary Key
-            $table->unsignedBigInteger('user_id'); // Foreign Key untuk tabel users
-            $table->unsignedBigInteger('layanan_id'); // Foreign Key untuk tabel layanans
+            $table->unsignedBigInteger('user_id')->nullable(); // Foreign Key untuk tabel users
+            $table->unsignedBigInteger('layanan_id')->nullable(); // Foreign Key untuk tabel layanans
             $table->string('nama'); // Nama pemesan
             $table->string('no_hp'); // Nomor telepon pemesan
             $table->date('tanggal'); // Tanggal pemesanan
