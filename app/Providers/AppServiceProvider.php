@@ -26,5 +26,7 @@ class AppServiceProvider extends ServiceProvider
 
         // Share testimoni data to all views
         View::share('testimonis', Testimoni::all());
+
+        \Carbon\Carbon::setLocale('id');
     }
 }

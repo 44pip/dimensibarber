@@ -69,7 +69,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td>{{ $item->no_hp }}</td>
-                                        <td>{{ $item->tanggal }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d - F - Y') }}</td>
                                         <td>{{ $item->waktu }}</td>
                                         <td>{{ $item->catatan }}</td>
                                         <td>

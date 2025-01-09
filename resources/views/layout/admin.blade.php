@@ -87,7 +87,9 @@
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt=""
                                 style="width: 40px; height: 40px;">
                             <span>Admin</span>
-                            <h6 class="d-none d-lg-inline-flex">John Doe</h6>
+                            <h6 class="d-none d-lg-inline-flex">
+                                {{ Auth::check() ? Auth::user()->name : 'Guest' }}
+                            </h6>                            
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{ route('logout') }}" class="dropdown-item">Log Out</a>
