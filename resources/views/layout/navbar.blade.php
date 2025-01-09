@@ -84,28 +84,19 @@
                 <h1 class="text-uppercase">Testimoni Pelanggan</h1>
             </div>
             <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                <div class="testimonial-item text-center"
-                    data-dot="<img class='img-fluid' src='{{ asset('assets/img/testimonial-1.jpg') }}' alt='Afif Musyaffa'>">
-                    <h4 class="text-uppercase">Afif Musyaffa</h4>
-                    <p class="text-primary">Mahasiswa</p>
-                    <span class="fs-5">Mantap cukurannya bang, membuat lebih percaya diri saat keluar rumah!</span>
-                </div>
-                <div class="testimonial-item text-center"
-                    data-dot="<img class='img-fluid' src='{{ asset('assets/img/testimonial-2.jpg') }}' alt='Rizal Wahyu Hermawan'>">
-                    <h4 class="text-uppercase">Rizal Wahyu Hermawan</h4>
-                    <p class="text-primary">Mahasiswa</p>
-                    <span class="fs-5">Saya merasa lebih tampan setelah cukur disini!</span>
-                </div>
-                <div class="testimonial-item text-center"
-                    data-dot="<img class='img-fluid' src='{{ asset('assets/img/testimonial-3.jpg') }}' alt='Rafael Hadi Rianda'>">
-                    <h4 class="text-uppercase">Rafael Hadi Rianda</h4>
-                    <p class="text-primary">Mahasiswa</p>
-                    <span class="fs-5">Aku sangat puas dengan pelayanannya!</span>
-                </div>
+                @foreach ($testimonis as $testimoni)
+                    <div class="testimonial-item text-center">
+                        <h4 class="text-uppercase">{{ $testimoni->nama }}</h4>
+                        <p class="text-primary">Pelanggan</p>
+                        <span class="fs-5">{{ $testimoni->komentar }}</span>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
     <!-- Testimonial End -->
+
+
 
     <!-- Add Testimonial Start -->
     <div class="container-fluid py-5 bg-secondary">

@@ -13,6 +13,7 @@ class TestimoniController extends Controller
         $this->middleware('auth')->only(['index', 'destroy']);
     }
 
+
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +29,7 @@ class TestimoniController extends Controller
     public function customer()
     {
         $testimoni = Testimoni::paginate(10);
-        return view('landingpage.testimoni', compact('testimoni'));
+        return view('layout.navbar', compact('testimoni'));
     }
 
     /**
